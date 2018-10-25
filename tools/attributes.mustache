@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>TF2 Attribute List</title>
+	
+	<style>
+	body {
+		font-family: Verdana,Arial,sans-serif;
+		font-size: 0.75em;
+		
+		background-color: #111;
+		color: #FFF;
+	}
+	td {
+		padding: 0.25em;
+	}
+	a {
+		color: #1eb;
+	}
+	.attribute {
+		vertical-align: top;
+	}
+	.header {
+		font-weight: bold;
+	}
+	.value_type {
+		overflow: hidden;
+	}
+	.footer {
+		margin-top: 2.5em;
+		text-align: center;
+	}
+	.positive {
+		color: #28F;
+	}
+	.negative {
+		color: #F00;
+	}
+	tr:nth-child(even) {
+		background: #222;
+	}
+	tr:hover {
+		background: #333;
+	}
+	</style>
+</head>
+<body>
+	<h1>List of Team Fortress 2 attributes:</h1>
+	<table class="attribute-list">
+		<thead>
+			<tr class="attribute header">
+				<th class="id">ID</th>
+				<th class="name">Name</th>
+				<th class="description">Description</th>
+				<th class="is_hidden">Hidden</th>
+				<th class="value_type">Value Type</th>
+				<th class="class_name">Class</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#attributes}}
+			<tr class="attribute entry">
+				<td class="id">{{defindex}}</td>
+				<td class="name {{effect_type}}">{{name}}</td>
+				<td class="description">{{description_string}}</td>
+				<td class="is_hidden">{{#hidden}}Yes{{/hidden}}{{^hidden}}No{{/hidden}}</td>
+				<td class="value_type">{{description_format}}</td>
+				<td class="class_name">{{attribute_class}}</td>
+			</tr>
+			{{/attributes}}
+		</tbody>
+	</table>
+	<div class="footer">
+		<div>
+			Generated with <a href="https://github.com/defunkt/pystache">pystache</a> and
+			<a href="https://gist.github.com/nosoop/3207d6cd502cdd104b3da3130dcb58ce">this script</a>.
+		</div>
+	</div>
+</body>
+</html>
