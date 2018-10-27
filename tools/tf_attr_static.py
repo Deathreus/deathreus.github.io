@@ -16,10 +16,10 @@ def main():
   data = steam.api.interface("IEconItems_440").GetSchemaOverview(version=1)
 
   with open('schema_overview.json', 'w') as f:
-    f.write(json.dumps(data, indent=4, separators=(',', ': ')))
+    json.dump(data, f, indent=4, separators=(',', ': '))
   
   with open('../items/attributes.html', 'w') as f:
-    renderer = pystache.Renderer()
+    renderer = pystache.Renderer(file_encoding='utf-8', string_encoding='utf-8')
     f.write(renderer.render_path('attributes.mustache', data['result']))
 
 if __name__ == "__main__":
