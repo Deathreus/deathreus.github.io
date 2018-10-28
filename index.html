@@ -80,41 +80,6 @@
 
         .wsite-product .wsite-product-price a {
         }
-		
-		.dropbtn {
-			background-color: #4CAF50;
-			color: white;
-			padding: 16px;
-			font-size: 16px;
-			border: none;
-		}
-
-		.dropdown {
-			position: relative;
-			display: inline-block;
-		}
-
-		.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			z-index: 1;
-		}
-
-		.dropdown-content a {
-			color: black;
-			padding: 12px 16px;
-			text-decoration: none;
-			display: block;
-		}
-
-		.dropdown-content a:hover {background-color: #ddd;}
-
-		.dropdown:hover .dropdown-content {display: block;}
-
-		.dropdown:hover .dropbtn {background-color: #3e8e41;}
     </style>
 	
 	<script>
@@ -138,12 +103,12 @@
 	(function(jQuery){
 		function initFlyouts(){
 			initPublishedFlyoutMenus(
-				[{"id":"969361100730105157","title":"Home","url":"index.html","target":"","nav_menu":false},{"id":"210641512550557701","title":"About","url":"about.html","target":"","nav_menu":false},{"id":"126476151489708634","title":"Contact","url":"contact.html","target":"","nav_menu":false},{"id":"340656117336989608","title":"Plugins","url":"plugins.html","target":"","nav_menu":false},{"id":"164868779670459406","title":"Servers","url":"servers.html","target":"","nav_menu":false}],
-				"210641512550557701",
+				[{"id":"969361100730105157","title":"Home","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"210641512550557701","title":"About","url":"about.html","target":"","nav_menu":false,"nonclickable":false},{"id":"126476151489708634","title":"Contact","url":"contact.html","target":"","nav_menu":false,"nonclickable":false},{"id":"340656117336989608","title":"Plugins","url":"plugins.html","target":"","nav_menu":false,"nonclickable":false},{"id":"494142311947888166","title":"TF2 Stuff","url":"","target":"","nav_menu":false,"nonclickable":true}],
+				"969361100730105157",
 				'',
 				'active',
 				false,
-				{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nav_menu}}\n\t\t\thref=\"{{url}}\"\n\t\t{{\/nav_menu}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nav_menu}}\n\t\t\thref=\"{{url}}\"\n\t\t{{\/nav_menu}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
+				{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
 				{}
 			)
 		}
@@ -192,22 +157,27 @@
                                 Plugins
                             </a>
                         </li>
-                        <li id="pg164868779670459406" class="wsite-menu-item-wrap">
-                            <a href="servers.html" class="wsite-menu-item">
-                                Servers
-                            </a>
-                        </li>
 						<li id="pg495876651742154564" class="wsite-menu-item-wrap">
-							<div class="dropdown">
-								<button class="dropbtn">TF2 Stuff</button>
-								<div class="dropdown-content">
-									<a href="items/attributes.html">
-										Attributes
-									</a>
-									<a href="items/items.html">
-										Items
-									</a>
-								</div>
+							<a class="wsite-menu-item">
+								TF2 Stuff
+							</a>
+							<div class="wsite-menu-wrap" style="display:none">
+								<ul class="wsite-menu">
+									<li id="wsite-nav-522842023704699905" class="wsite-menu-subitem-wrap ">
+										<a href="items/attributes.html" class="wsite-menu-subitem">
+											<span class="wsite-menu-title">
+												Attributes
+											</span>
+										</a>
+									</li>
+									<li id="wsite-nav-451556268475378866" class="wsite-menu-subitem-wrap ">
+										<a href="items/items.html" class="wsite-menu-subitem">
+											<span class="wsite-menu-title">
+												Items
+											</span>
+										</a>
+									</li>
+								</ul>
 							</div>
 							<!--<a href="items/attributes.html" class="wsite-menu-item">
 								Attributes
@@ -275,22 +245,27 @@
                     Plugins
                 </a>
             </li>
-            <li id="pg164868779670459406" class="wsite-menu-item-wrap">
-                <a href="servers.html" class="wsite-menu-item">
-                    Servers
-                </a>
-            </li>
 			<li id="pg495876651742154564" class="wsite-menu-item-wrap">
-				<div class="dropdown">
-					<button class="dropbtn">TF2 Stuff</button>
-					<div class="dropdown-content">
-						<a href="items/attributes.html">
-							Attributes
-						</a>
-						<a href="items/items.html">
-							Items
-						</a>
-					</div>
+				<a class="wsite-menu-item">
+					TF2 Stuff
+				</a>
+				<div class="wsite-menu-wrap" style="display:none">
+					<ul class="wsite-menu">
+						<li id="wsite-nav-522842023704699905" class="wsite-menu-subitem-wrap ">
+							<a href="items/attributes.html" class="wsite-menu-subitem">
+								<span class="wsite-menu-title">
+									Attributes
+								</span>
+							</a>
+						</li>
+						<li id="wsite-nav-451556268475378866" class="wsite-menu-subitem-wrap ">
+							<a href="items/items.html" class="wsite-menu-subitem">
+								<span class="wsite-menu-title">
+									Items
+								</span>
+							</a>
+						</li>
+					</ul>
 				</div>
                 <!--<a href="items/attributes.html" class="wsite-menu-item">
                     Attributes
