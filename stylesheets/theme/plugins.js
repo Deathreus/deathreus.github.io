@@ -1,4 +1,3 @@
-
 /*! Hammer.JS - v2.0.4 - 2014-09-28
  * http://hammerjs.github.io/
  *
@@ -311,6 +310,7 @@
      * @returns {number} uniqueId
      */
     var _uniqueId = 1;
+
     function uniqueId() {
         return _uniqueId++;
     }
@@ -387,7 +387,7 @@
          * should handle the inputEvent data and trigger the callback
          * @virtual
          */
-        handler: function () { },
+        handler: function () {},
 
         /**
          * bind the events
@@ -429,7 +429,7 @@
         } else {
             Type = TouchMouseInput;
         }
-        return new (Type)(manager, inputHandler);
+        return new(Type)(manager, inputHandler);
     }
 
     /**
@@ -614,7 +614,9 @@
             };
         }
 
-        var x = 0, y = 0, i = 0;
+        var x = 0,
+            y = 0,
+            i = 0;
         while (i < pointersLength) {
             x += pointers[i].clientX;
             y += pointers[i].clientY;
@@ -1471,21 +1473,21 @@
          * @param {Object} inputData
          * @returns {Const} STATE
          */
-        process: function (inputData) { }, // jshint ignore:line
+        process: function (inputData) {}, // jshint ignore:line
 
         /**
          * return the preferred touch-action
          * @virtual
          * @returns {Array}
          */
-        getTouchAction: function () { },
+        getTouchAction: function () {},
 
         /**
          * called when the gesture isn't allowed to recognize
          * like when another is being recognized or it is disabled
          * @virtual
          */
-        reset: function () { }
+        reset: function () {}
     };
 
     /**
@@ -2056,12 +2058,29 @@
          */
         preset: [
             // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
-            [RotateRecognizer, { enable: false }],
-            [PinchRecognizer, { enable: false }, ['rotate']],
-            [SwipeRecognizer, { direction: DIRECTION_HORIZONTAL }],
-            [PanRecognizer, { direction: DIRECTION_HORIZONTAL }, ['swipe']],
+            [RotateRecognizer, {
+                enable: false
+            }],
+            [PinchRecognizer, {
+                    enable: false
+                },
+                ['rotate']
+            ],
+            [SwipeRecognizer, {
+                direction: DIRECTION_HORIZONTAL
+            }],
+            [PanRecognizer, {
+                    direction: DIRECTION_HORIZONTAL
+                },
+                ['swipe']
+            ],
             [TapRecognizer],
-            [TapRecognizer, { event: 'doubletap', taps: 2 }, ['tap']],
+            [TapRecognizer, {
+                    event: 'doubletap',
+                    taps: 2
+                },
+                ['tap']
+            ],
             [PressRecognizer]
         ],
 
@@ -2144,7 +2163,7 @@
         toggleCssProps(this, true);
 
         each(options.recognizers, function (item) {
-            var recognizer = this.add(new (item[0])(item[1]));
+            var recognizer = this.add(new(item[0])(item[1]));
             item[2] && recognizer.recognizeWith(item[2]);
             item[3] && recognizer.requireFailure(item[3]);
         }, this);
