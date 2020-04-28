@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+#encoding: utf8
 
 import pystache, json, steam
 from optparse import OptionParser
-# import vdf
 
 def main():
   parser = OptionParser("usage: %prog [apikey]")
@@ -19,7 +19,7 @@ def main():
     json.dump(data, f, indent=4, separators=(',', ': '))
   
   with open('../items/attributes.html', 'w') as f:
-    renderer = pystache.Renderer(file_encoding='utf-8', string_encoding='utf-8')
+    renderer = pystache.Renderer("utf8", "utf8")
     f.write(renderer.render_path('attributes.mustache', data['result']))
 
 if __name__ == "__main__":
