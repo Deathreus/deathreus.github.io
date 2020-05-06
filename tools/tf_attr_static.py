@@ -13,14 +13,14 @@ def main():
   steam.api.key.set(argv[0])
 
   # data = {}
-  data = steam.api.interface("IEconItems_440").GetSchemaOverview(version=1)
+  data = steam.api.interface("IEconItems_440").GetSchemaOverview(language='en_US',version=1)
 
   with open('schema_overview.json', 'w') as f:
     json.dump(data, f, indent=4, separators=(',', ': '))
   
-  with open('../items/attributes.html', 'w') as f:
+  with open('../items/attributes.html', 'wb') as f:
     renderer = pystache.Renderer("utf8", "utf8")
-    f.write(renderer.render_path('attributes.mustache', data['result']))
+    f.write(renderer.render_path('attributes.mustache', data['result']).encode('utf8'))
 
 if __name__ == "__main__":
   main()
